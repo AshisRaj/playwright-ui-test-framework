@@ -64,6 +64,8 @@
     "lint": "eslint . --no-cache",
     "format": "prettier --write */**/*.ts */**/*.json --ignore-pattern ../../.prettierignore",
     "syntax-check": "tsc --noEmit",
-    "notify-report": "ts-node ./src/utils/notifications.ts --env qa --email True"
+    "notify-report:qa": "ts-node ./src/utils/notifications.ts --env qa --email True",
+    "notify-report:dev": "ts-node ./src/utils/notifications.ts --env dev --email True",
+    "notify-report:staging": "ts-node ./src/utils/notifications.ts --env staging --email True"
   }
 }
