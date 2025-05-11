@@ -41,7 +41,7 @@ This framework is designed to accelerate the development and execution of UI tes
   - `routes`: Defines Page routes or network interception logic for mocking or monitoring Page requests.
   - `scripts`: Contains utility scripts or automation scripts that are not directly part of the tests.
   - `utils`: Includes helper functions, utilities, or common modules used across the framework.
-- `tests/`: Contains tests files and folders.
+- `tests`: Contains tests files and folders.
 - `.editorconfig`: Contains the configuration for Editor.
 - `.gitignore`: Contains the list of files and folders to be ignored by git.
 - `.prettierignore`: Contains the list of files/folders Prettier must ignore.
