@@ -5,6 +5,7 @@
 - [Overview](#overview)
 - [Key Features/Functionalities/Capabilities](#key-featuresfunctionalitiescapabilities)
 - [Tech Stack](#tech-stack)
+- [Project Structure and Folder/Files Description](#project-structure-and-folderfiles-description)
 - [Prerequisite Software and Tools](#prerequisite-software-and-tools)
 - [Installation](#installation)
 - [Running Tests](#running-tests)
@@ -27,6 +28,31 @@ This framework is designed to accelerate the development and execution of UI tes
 - Typescript
 - Playwright
 - Allure Report
+
+## Project Structure and Folder/Files Description
+
+- `artifacts`: Contains the run time artifacts like downloads, logs, screenshots, and reports.
+- `src`: Contains the src code, files and folders apart from tests.
+  - `configs`: Contains configuration files for the framework, such as environment-specific settings.
+  - `data`: Stores test data files, such as JSON or CSV files, used during test execution.
+  - `environments`: Contains environment-specific configurations, such as URLs or credentials.
+  - `fixtures`: Includes reusable test data or setup/teardown logic for tests.
+  - `pages`: Implements the Page Object Model (POM) for web pages, encapsulating page-specific navigation, elements and actions.
+  - `routes`: Defines Page routes or network interception logic for mocking or monitoring Page requests.
+  - `scripts`: Contains utility scripts or automation scripts that are not directly part of the tests.
+  - `utils`: Includes helper functions, utilities, or common modules used across the framework.
+- `tests/`: Contains tests files and folders.
+- `.editorconfig`: Contains the configuration for Editor.
+- `.gitignore`: Contains the list of files and folders to be ignored by git.
+- `.prettierignore`: Contains the list of files/folders Prettier must ignore.
+- `.prettierrc`: Contains the configurations for Prettier.
+- `CodingGuideline.md`: Contains the coding guideline for Typescript.
+- `eslint.config.mjs`: Contains the
+- `package.json`: Contains the nodejs packages and dependencies list, scripts.
+- `playwright.config.ts`: Contains the playwright configurations.
+- `README.md`: Contains the documentation for the project.
+- `tsconfigs.json`: Contains the compilation configurations for TS.
+- `yarn.lock`: Contains the locked version of nodejs packages and dependencies list, useful in CI environment.
 
 ## Prerequisite Software and Tools
 
