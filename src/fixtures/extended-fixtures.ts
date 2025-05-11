@@ -26,9 +26,6 @@ type Fixtures = {
 
 export const test = baseTest.extend<Fixtures>({
   homePage: async ({ page }, use) => {
-    // Set up routes before using the page
-    logger.info('Setting up routes');
-    await Routes.setupRoutes(page);
     logger.info('Setting up HomePage fixture');
     const homePage = new HomePage(page);
     await use(homePage);
@@ -51,6 +48,13 @@ export const test = baseTest.extend<Fixtures>({
     const cartPage = new CartPage(page);
     await use(cartPage);
     logger.info('Tearing down CartPage fixture');
+  },
+  // Set up routes
+  page: async ({ page }, use) => {
+    logger.info('Setting up routes');
+    await Routes.setupRoutes(page);
+    await use(page);
+    logger.info('Tearing down routes');
   },
   // Add any other page classes you want to use in your tests
 
