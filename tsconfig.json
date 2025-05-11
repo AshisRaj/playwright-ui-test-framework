@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
+    "module": "commonjs",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      /* Specify a set of entries that re-map imports to additional lookup locations. */
+      "@configs/*": ["src/configs/*"],
+      "@data/*": ["src/data/*"],
+      "@fixtures/*": ["src/fixtures/*"],
+      "@utils/*": ["src/utils/*"],
+      "@environments/*": ["src/environments/*"],
+      "@pages/*": ["src/pages/*"],
+      "@routes/*": ["src/routes/*"],
+      "@scripts/*": ["src/scripts/*"]
+    }
+  }
+}

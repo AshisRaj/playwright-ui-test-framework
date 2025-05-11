@@ -1,0 +1,87 @@
+Generate a Playwright UI automation test script in TypeScript using ES6+ syntax. The script should automate a functional UI test scenario with the following best practices and structure:
+
+🧪 Test Scenario
+Test Name: {{TestName}}
+
+Steps:
+{{Steps}}
+(Include at least one step where clicking a link or button causes a page navigation.)
+
+📂 File Structure
+Test file: tests/example.spec.ts
+
+Page Object files:
+
+pages/BasePage.ts
+
+pages/HomePage.ts
+
+pages/NextPage.ts ← (new page after navigation)
+
+✅ Test Script Requirements
+Use test.step() blocks to encapsulate each test action or validation.
+
+Import and instantiate appropriate Page Object classes before and after navigation:
+
+Use HomePage for initial interactions.
+
+After navigation, re-instantiate with NextPage using the same page object.
+
+Ensure clear separation of concerns:
+
+Test logic lives in .spec.ts files.
+
+Page-specific actions and locators live in respective Page Object classes.
+
+🧱 Page Object Model (POM) Design
+BasePage.ts:
+
+Accepts page: Page via constructor.
+
+Provides shared methods: waitForElement(), navigateTo(), isVisible() etc.
+
+Each Page class (e.g., HomePage, NextPage):
+
+Extends BasePage.
+
+Defines locators using arrow functions:
+
+ts
+Copy
+Edit
+loginButton = () => this.page.locator('button[type=submit]')
+Exposes page-specific action methods, e.g.:
+
+ts
+Copy
+Edit
+async clickLearnMore() {
+  await this.learnMoreLink().click();
+}
+🧑‍💻 Coding Guidelines
+Use modern ES6+ syntax: arrow functions for locators, actions and verification, const/let, destructuring, async/await.
+
+Follow Playwright best practices:
+
+Use explicit waits (await expect(locator).toBeVisible()).
+
+Avoid hard waits or fixed timeouts.
+
+Use test.step() for enhanced traceability.
+
+All test interactions must be async/await.
+
+📤 Output Required
+A sample test script: example.spec.ts
+
+Demonstrate: launching the app, interacting with HomePage, clicking a link that triggers navigation, then interacting with NextPage.
+
+Three Page Object files:
+
+BasePage.ts with reusable utilities and constructor.
+
+HomePage.ts with locators and actions before navigation.
+
+NextPage.ts with locators and actions for post-navigation validation.
+
+✅ The generated code should be modular, scalable, and production-ready, compatible with @playwright/test.

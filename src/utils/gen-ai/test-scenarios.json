@@ -1,0 +1,22 @@
+[
+  {
+    "TestName": "Playwright Dev site Tests",
+    "Steps": [
+      {
+        "StepDescription": "Navigate to the base URL",
+        "Action": "goTo",
+        "Selector": "testConfig.baseURL"
+      },
+      {
+        "StepDescription": "Click the 'Get started' link",
+        "Action": "click",
+        "Selector": "getByRole:link:Get started"
+      },
+      {
+        "StepDescription": "Verify the 'Installation' heading is visible",
+        "Action": "expectVisible",
+        "Selector": "getByRole:heading:Installation"
+      }
+    ]
+  }
+]

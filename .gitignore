@@ -1,0 +1,26 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/artifacts/*
+!artifacts/temp
+artifacts/temp/*
+!artifacts/temp/.keep
+!artifacts/downloads
+artifacts/downloads/*
+!artifacts/downloads/.keep
+!artifacts/logs
+artifacts/logs/*
+!artifacts/logs/.keep
+!artifacts/reports
+artifacts/reports/*
+!artifacts/reports/.keep
+!artifacts/cookies
+artifacts/cookies/*
+!artifacts/cookies/.keep
+
+
+
