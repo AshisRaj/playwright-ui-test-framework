@@ -52,6 +52,9 @@
   },
   "scripts": {
     "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:sanity": "playwright test --grep @sanity",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:ui:debug": "playwright test --ui --debug",
