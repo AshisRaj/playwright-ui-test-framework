@@ -41,7 +41,7 @@ This framework is designed to accelerate the development and execution of UI tes
   - `routes`: Defines Page routes or network interception logic for mocking or monitoring Page requests.
   - `scripts`: Contains utility scripts or automation scripts that are not directly part of the tests.
   - `utils`: Includes helper functions, utilities, or common modules used across the framework.
-- `tests`: Contains tests files and folders.
+- `tests/`: Contains tests files and folders.
 - `.editorconfig`: Contains the configuration for Editor.
 - `.gitignore`: Contains the list of files and folders to be ignored by git.
 - `.prettierignore`: Contains the list of files/folders Prettier must ignore.
@@ -81,6 +81,18 @@ yarn run test
 yarn test:headed
 or
 yarn run test:headed
+# Run smoke tests
+yarn test:smoke
+or
+yarn run test:smoke
+# Run sanity tests
+yarn test:sanity
+or
+yarn run test:sanity
+# Run regression tests
+yarn test:regression
+or
+yarn run test:regression
 ```
 
 ## Generate and open Test Report
