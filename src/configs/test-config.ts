@@ -6,6 +6,7 @@ const ENV = (process.env.ENV || 'dev').toLowerCase();
 dotenv.config({ path: path.resolve(__dirname, `../environments/${ENV}.env`) });
 
 // load environment specific test data from JSON
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let testData: any;
 
 export const envTestData = () => {
