@@ -6,15 +6,31 @@ export class HomePage extends BasePage {
     super(page);
   }
 
-  // Click the "Get Started" link or button
-  async clickGetStarted(): Promise<void> {
-    const getStartedButton = this.page.getByRole('link', { name: 'Get started' });
+  elements = {
+    // Define page elements
+    actionElements: {
+      getStartedButton: () => this.page.getByRole('link', { name: 'Get started' }),
+    },
 
-    // Ensure the element is visible and enabled
-    await getStartedButton.waitFor({ state: 'visible' });
-    await getStartedButton.scrollIntoViewIfNeeded();
+    inputElements: {},
 
-    // Perform the click
-    await getStartedButton.click();
-  }
+    visualElements: {},
+  };
+
+  actions = {
+    // Define actions
+    clickGetStarted: async () => {
+      const getStartedButton = this.elements.actionElements.getStartedButton();
+      await getStartedButton.waitFor({ state: 'visible' });
+      await getStartedButton.scrollIntoViewIfNeeded();
+      await getStartedButton.click();
+    },
+  };
+
+  navigation = {
+    // Define navigation
+    goToPWDevPage: async () => {
+      await this.navigateTo('https://playwright.dev/');
+    },
+  };
 }
