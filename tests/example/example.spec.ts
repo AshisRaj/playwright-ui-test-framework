@@ -1,45 +1,39 @@
 import { expect, test } from '@fixtures/extended-fixtures';
-import logger from '@utils/logger';
 
 test.describe('playwright Dev site Tests', () => {
   test.beforeEach(async ({ homePage, testData }) => {
     await test.step('Navigate to URL', async () => {
       await homePage.navigateTo(testData.BASE_URL);
     });
-    logger.info('Completed beforeEach hook');
   });
 
   test('has title', async ({ page }) => {
-    logger.info('Starting test: has title');
     await test.step('Check title', async () => {
       await expect(page).toHaveTitle(/Playwright/);
-      logger.info('Title verified successfully');
     });
   });
 
-  test('get started link', async ({ homePage, page }) => {
-    logger.info('Starting test: get started link');
+  test('get started link', async ({ page, homePage }) => {
     await test.step('Click "Get started" link', async () => {
-      await homePage.clickGetStarted();
-      logger.info('Clicked "Get started" link');
+      await homePage.actions.clickGetStarted();
     });
+
     await test.step('Check for "Installation" heading', async () => {
       await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-      logger.info('"Installation" heading is visible');
     });
   });
 });
 
 test.describe('playwright Dev site Tests with Routes', () => {
-  test.beforeEach(async ({ homePage }) => {
+  test.beforeEach(async ({ homePage, testData }) => {
     await test.step('Navigate to URL', async () => {
-      await homePage.navigateTo(process.env.BASE_URL || 'https://default.url/');
+      await homePage.navigateTo(testData.BASE_URL);
     });
   });
 
-  test('should mock Get Started API', async ({ homePage, page }) => {
+  test('should mock Get Started API', async ({ page, homePage }) => {
     await test.step('Click "Get started" link', async () => {
-      await homePage.clickGetStarted();
+      await homePage.actions.clickGetStarted();
     });
 
     await test.step('Verify mocked response', async () => {
