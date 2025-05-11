@@ -106,9 +106,9 @@ yarn posttest
 ## Sending Notifications
 
 ```sh
-yarn notify-report
+yarn notify-report:qa
 or
-yarn run notify-report
+yarn run notify-report:qa
 ```
 
 ## Validating Syntax and Linting Rules
