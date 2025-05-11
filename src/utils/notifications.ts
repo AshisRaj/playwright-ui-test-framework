@@ -31,6 +31,7 @@ class Notification {
   private static GOOGLE_CHAT_WEBHOOK = process.env.GOOGLE_CHAT_WEBHOOK || '';
   private static SLACK_WEBHOOK = process.env.SLACK_WEBHOOK || '';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(args: any) {
     const baseDir = path.resolve(__dirname, '../..');
     this.testResultsFolder = path.resolve(__dirname, '../../artifacts/reports/allure-report');
@@ -215,6 +216,7 @@ class Notification {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseArguments(): any {
   const parser = new ArgumentParser({
     description: 'Email Utility for sending test reports',
