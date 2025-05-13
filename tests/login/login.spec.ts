@@ -24,10 +24,6 @@ test.describe('sauceDemo Login Tests', () => {
       await test.step('Verify successful login', async () => {
         await expect(page.getByText('Products')).toBeVisible();
       });
-
-      await test.step('Save session storage', async () => {
-        await page.context().storageState({ path: storageStatePath });
-      });
     },
   );
 
