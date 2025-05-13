@@ -105,10 +105,10 @@ export default defineConfig([
       '**/openapitools.json',
       '**/executors.json',
       '.vscode/**',
-      'artifacts/*State.json',
       '**/utils/test-scenarios.json',
       '**/configs/executor.json',
-      '**/artifacts/*cookies.json',
+      '**/artifacts/**/*cookies.json',
+      '**/artifacts/reports/**',
     ],
   },
 ]);
