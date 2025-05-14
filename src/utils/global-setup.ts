@@ -52,6 +52,7 @@ const users = [
     } else {
       const context = await browser.newContext();
       const page = await context.newPage();
+
       await page.goto('https://www.saucedemo.com/');
 
       await page.getByRole('textbox', { name: 'Username' }).fill('standard_user');
