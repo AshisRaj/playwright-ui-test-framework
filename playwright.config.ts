@@ -1,6 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 import logger from '@utils/logger';
-import os from 'os';
 import path from 'path';
 import { envConfig } from './src/configs/test-config';
 
@@ -38,23 +37,41 @@ export default defineConfig({
     // ['list'], // Use the list reporter for console output
     // ['html'], // Keep the default HTML reporter
     [
-      'allure-playwright',
+      'monocart-reporter',
       {
-        detail: true,
-        resultsDir: path.join(__dirname, 'artifacts', 'reports', 'allure-results'),
-        suiteTitle: true,
-        open: 'never',
-        environmentInfo: {
-          hostname: os.hostname(), // Add hostname
-          user_id: os.userInfo().username, // Add user ID
-          os_platform: os.platform(),
-          os_release: os.release(),
-          os_version: os.version(),
-          node_version: process.version,
-        },
+        name: 'NatWest-Functional UI Test Report',
+        outputFile: path.join(__dirname, 'artifacts', 'reports', 'monocart-report', 'index.html'),
+        // whether to copy attachments to the reporter output dir, defaults to true
+        copyAttachments: false,
+        // {boolean} Indicates whether to clean previous files in output dir before generating report. Defaults to true.
+        clean: true,
+        // connect previous report data for trend chart
+        trend: path.join(__dirname, 'artifacts', 'reports', 'monocart-report', 'index.json'),
+
+        // zip: {
+        //   outputFile: `./artifacts/reports/monocart-report/monocart-report.zip`,
+        //   clean: true,
+        // },
       },
-    ], // Add Allure reporter
-    ['./src/configs/custom-reporter-config.ts'], // Add custom reporter
+    ],
+    // [
+    //   'allure-playwright',
+    //   {
+    //     detail: true,
+    //     resultsDir: path.join(__dirname, 'artifacts', 'reports', 'allure-results'),
+    //     suiteTitle: true,
+    //     open: 'never',
+    //     environmentInfo: {
+    //       hostname: os.hostname(), // Add hostname
+    //       user_id: os.userInfo().username, // Add user ID
+    //       os_platform: os.platform(),
+    //       os_release: os.release(),
+    //       os_version: os.version(),
+    //       node_version: process.version,
+    //     },
+    //   },
+    // ], // Add Allure reporter
+    // ['./src/configs/custom-reporter-config.ts'], // Add custom reporter
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
