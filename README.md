@@ -5,8 +5,8 @@
 - [Overview](#overview)
 - [Key Features/Functionalities/Capabilities](#key-featuresfunctionalitiescapabilities)
 - [Tech Stack](#tech-stack)
-- [Project Structure and Folder/Files Description](#project-structure-and-folderfiles-description)
 - [Prerequisite Software and Tools](#prerequisite-software-and-tools)
+- [Project Structure and Folder/Files Description](#project-structure-and-folderfiles-description)
 - [Installation](#installation)
 - [Running Tests](#running-tests)
 - [Generate and open Test Report](#generate-and-open-test-report)
@@ -28,6 +28,13 @@ This framework is designed to accelerate the development and execution of UI tes
 - Typescript
 - Playwright
 - Allure Report
+
+## Prerequisite Software and Tools
+
+- Node 20.X
+- Yarn 1.22.x
+- VS Code, or equivalent IDE
+- Git
 
 ## Project Structure and Folder/Files Description
 
@@ -54,11 +61,15 @@ This framework is designed to accelerate the development and execution of UI tes
 - `tsconfigs.json`: Contains the compilation configurations for TS.
 - `yarn.lock`: Contains the locked version of nodejs packages and dependencies list, useful in CI environment.
 
-## Prerequisite Software and Tools
-
-- Node 20.X
-
 ## Installation
+
+### Install yarn globally for yarn command line to work
+
+```sh
+npm install --global yarn
+# Ensure the command `yarn -v` works.
+yarn -v
+```
 
 ### Clone the repository
 
@@ -68,7 +79,15 @@ git clone https://github.com/AshisRaj/playwright-ui-test-framework.git
 
 ### Packages installations
 
-- yarn install
+```sh
+yarn install
+```
+
+### Install Playwright browsers
+
+```sh
+yarn playwright install
+```
 
 ## Running Tests
 
