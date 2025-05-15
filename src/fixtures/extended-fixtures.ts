@@ -17,7 +17,6 @@ type Fixtures = {
   cartPage: CartPage;
   // Add any other page classes you want to use in your tests
   testData: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any; // Allow dynamic keys from environment-specific data
     updateTestData: (data: object, updates: Partial<unknown>) => object;
     removeTestDataFields: (data: object, fields: string[]) => object;
