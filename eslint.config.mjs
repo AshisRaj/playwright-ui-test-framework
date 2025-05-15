@@ -25,6 +25,13 @@ export default defineConfig([
 
   // TypeScript-specific rules
   tseslint.configs.recommended,
+  {
+    files: ['**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // Ignore unused variables prefixed with _
+      '@typescript-eslint/no-explicit-any': 'warn', // Allow explicit any type
+    },
+  },
 
   // JSON files
   {
