@@ -13,14 +13,23 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 
+// Helper to format messages with multiple arguments
+function formatMessage(info: any) {
+  // Combine message and splat (extra args)
+  const splat = info[Symbol.for('splat')] || [];
+  const allArgs = [info.message, ...splat];
+  return allArgs.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg))).join(' ');
+}
+
 // Create the logger
 const logger = createLogger({
-  level: 'info', // Default log level
+  level: 'debug', // Enable all log levels
   format: format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    format.printf(({ level, message, timestamp }) => {
-      const color = level === 'error' ? 'red' : level === 'warn' ? 'yellow' : 'white';
-      const coloredMessage = chalk[color](`[${level}] ${timestamp} - ${message}`);
+    format.printf((info) => {
+      const color = info.level === 'error' ? 'red' : info.level === 'warn' ? 'yellow' : info.level === 'debug' ? 'cyan' : 'white';
+      const msg = formatMessage(info);
+      const coloredMessage = chalk[color](`[${info.level}] ${info.timestamp} - ${msg}`);
       return coloredMessage;
     }),
   ),
@@ -28,9 +37,11 @@ const logger = createLogger({
     new transports.Console({
       format: format.combine(
         format.colorize(),
-        format.printf(({ level, message, timestamp }) => {
-          const color = level === 'error' ? 'red' : level === 'warn' ? 'yellow' : 'white';
-          const coloredMessage = chalk[color](`[${level}] ${timestamp} - ${message}`);
+        format.printf((info) => {
+          const color =
+            info.level === 'error' ? 'red' : info.level === 'warn' ? 'yellow' : info.level === 'debug' ? 'cyan' : 'white';
+          const msg = formatMessage(info);
+          const coloredMessage = chalk[color](`[${info.level}] ${info.timestamp} - ${msg}`);
           return coloredMessage;
         }),
       ),
