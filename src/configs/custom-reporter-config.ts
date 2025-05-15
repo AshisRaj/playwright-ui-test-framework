@@ -10,7 +10,6 @@ export default class CustomReporterConfig implements Reporter {
   private skippedTests: number = 0;
   private timedOutTests: number = 0;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   onBegin(config: any, suite: any): void {
     const allureResultPath = join(__dirname, '..', '..', 'artifacts', 'reports', 'allure-results');
 
@@ -26,7 +25,6 @@ export default class CustomReporterConfig implements Reporter {
     logger.info(chalk.blue('Test suite execution started.'));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onEnd(result: any): void {
     logger.info(chalk.green(`Test suite execution completed with status: ${result.status}`));
     logger.info(chalk.blue('Test Summary:'));
