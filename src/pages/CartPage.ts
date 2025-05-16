@@ -9,14 +9,13 @@ export class CartPage extends BasePage {
   elements = {
     // Define page elements
     actionElements: {
-      checkOutButton: () => this.page.getByRole('button', { name: 'Checkout' }),
-      // page.locator('[data-test="checkout"]')
+      checkOutButton: () => this.getByRole('button', { name: 'Checkout' }),
     },
 
     inputElements: {},
 
     visualElements: {
-      cartTitle: () => this.page.locator('[data-test="title"]', { hasText: 'Your Cart' }),
+      cartTitle: () => this.locator('[data-test="title"]', { hasText: 'Your Cart' }),
     },
   };
 
@@ -24,8 +23,7 @@ export class CartPage extends BasePage {
     // Define actions
     clickCheckOutButton: async () => {
       const button = this.elements.actionElements.checkOutButton();
-      await button.waitFor({ state: 'visible' });
-      await button.click();
+      await this.click(button);
     },
   };
 
