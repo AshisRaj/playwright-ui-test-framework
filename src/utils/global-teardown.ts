@@ -6,11 +6,11 @@ import logger from './logger';
 async function globalTeardown() {
   logger.info(chalk.blue('Global Teardown Started'));
 
-  const cookiesPath = resolve(__dirname, '../../artifacts/cookies');
+  const cookiesGlob = resolve('artifacts/cookies/standard_user_cookies.json');
 
-  // Cleanup old artifacts
-  rimraf(`${cookiesPath}`);
-  logger.info(chalk.green(`Deleted: ${cookiesPath}`));
+  // Cleanup old artifacts using glob pattern
+  rimraf(cookiesGlob);
+  logger.info(chalk.green(`Deleted files matching: ${cookiesGlob}`));
 
   // Add your global teardown logic here
   logger.info(chalk.green('Global Teardown Completed'));
