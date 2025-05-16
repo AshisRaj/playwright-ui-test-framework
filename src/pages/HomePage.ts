@@ -9,7 +9,7 @@ export class HomePage extends BasePage {
   elements = {
     // Define page elements
     actionElements: {
-      getStartedButton: () => this.page.getByRole('link', { name: 'Get started' }),
+      getStartedButton: () => this.getByRole('link', { name: 'Get started' }),
     },
 
     inputElements: {},
@@ -20,10 +20,8 @@ export class HomePage extends BasePage {
   actions = {
     // Define actions
     clickGetStarted: async () => {
-      const getStartedButton = this.elements.actionElements.getStartedButton();
-      await getStartedButton.waitFor({ state: 'visible' });
-      await getStartedButton.scrollIntoViewIfNeeded();
-      await getStartedButton.click();
+      const button = this.elements.actionElements.getStartedButton();
+      await this.click(button);
     },
   };
 
