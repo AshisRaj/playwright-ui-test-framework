@@ -9,16 +9,16 @@ export class LoginPage extends BasePage {
   elements = {
     // Define page elements
     actionElements: {
-      submitButton: () => this.page.getByRole('button', { name: 'Login' }),
+      submitButton: () => this.getByRole('button', { name: 'Login' }),
     },
 
     inputElements: {
-      userName: () => this.page.getByRole('textbox', { name: 'Username' }),
-      password: () => this.page.getByRole('textbox', { name: 'Password' }),
+      userName: () => this.getByRole('textbox', { name: 'Username' }),
+      password: () => this.getByRole('textbox', { name: 'Password' }),
     },
 
     visualElements: {
-      pageTitle: () => this.page.getByText('Swag Labs').waitFor({ state: 'visible' }),
+      pageTitle: () => this.getByText('Swag Labs'),
     },
   };
 
@@ -26,18 +26,17 @@ export class LoginPage extends BasePage {
     // Define actions
     clickSubmitButton: async () => {
       const button = this.elements.actionElements.submitButton();
-      await button.waitFor({ state: 'visible' });
-      await button.click();
+      await this.click(button);
     },
 
     fillUserName: async (username: string) => {
-      const userNameField = this.elements.inputElements.userName();
-      await userNameField.fill(username);
+      const usernameField = this.elements.inputElements.userName();
+      await this.fill(usernameField, username);
     },
 
     fillPassword: async (password: string) => {
       const passwordField = this.elements.inputElements.password();
-      await passwordField.fill(password);
+      await this.fill(passwordField, password);
     },
   };
 
