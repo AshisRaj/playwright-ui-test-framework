@@ -28,11 +28,13 @@ This framework is designed to accelerate the development and execution of UI tes
 - Typescript
 - Playwright
 - Allure Report
+- Monocart Report
 
 ## Prerequisite Software and Tools
 
 - Node 20.X
 - Yarn 1.22.x
+- install java/jdk for Allure Report (Set JAVA_HOME)
 - VS Code, or equivalent IDE
 - Git
 
