@@ -248,7 +248,7 @@ export const sendReportNotification = async (
       service: 'gmail',
       auth: {
         user: process.env.USERNAME || 'ashis.raj@gmail.com',
-        pass: process.env.PASSWORD || 'okaf tofa gcdz qdll',
+        pass: process.env.PASSWORD || '<add your app password from gmail>',
       },
     },
     message: {
@@ -289,8 +289,8 @@ export const sendReportNotification = async (
     },
   };
 
-  if (!emailOptions.transport.auth.pass) {
-    logger.error('[email] require a password');
+  if (!emailOptions.transport.auth.pass || emailOptions.transport.auth.pass === '<add your app password from gmail>') {
+    logger.error('[email] require a password, add your app password');
     return;
   }
 
