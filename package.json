@@ -68,6 +68,12 @@
     "syntax-check": "tsc --noEmit",
     "notify-report:qa": "ts-node ./src/utils/notifications.ts --env qa --email True",
     "notify-report:dev": "ts-node ./src/utils/notifications.ts --env dev --email True",
-    "notify-report:staging": "ts-node ./src/utils/notifications.ts --env staging --email True"
+    "notify-report:staging": "ts-node ./src/utils/notifications.ts --env staging --email True",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint . --max-warnings 0 --no-cache"
+    ]
   }
 }

@@ -1,13 +1,13 @@
+import { BasePage } from '@pages';
 import { Page } from '@playwright/test';
-import { BasePage } from 'src/pages/BasePage';
 
 export class LoginPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
 
+  // Define page elements
   elements = {
-    // Define page elements
     actionElements: {
       submitButton: () => this.getByRole('button', { name: 'Login' }),
     },
@@ -22,8 +22,8 @@ export class LoginPage extends BasePage {
     },
   };
 
+  // Define page actions
   actions = {
-    // Define actions
     clickSubmitButton: async () => {
       const button = this.elements.actionElements.submitButton();
       await this.click(button);
@@ -40,8 +40,8 @@ export class LoginPage extends BasePage {
     },
   };
 
+  // Define page navigation
   navigation = {
-    // Define navigation
     goToLoginPage: async () => {
       await this.navigateTo('https://www.saucedemo.com/');
     },
@@ -50,4 +50,9 @@ export class LoginPage extends BasePage {
       await this.navigateTo('https://www.saucedemo.com/inventory.html');
     },
   };
+
+  async dispose(): Promise<void> {
+    // Add any cleanup logic here, e.g., closing popups, clearing storage, etc.
+    // If nothing is needed, you can leave this empty or log for debugging.
+  }
 }

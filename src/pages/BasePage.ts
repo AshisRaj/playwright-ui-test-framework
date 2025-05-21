@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { expect, Frame, FrameLocator, Locator, Page } from '@playwright/test';
 
 export abstract class BasePage {
   protected page: Page;
@@ -25,11 +25,39 @@ export abstract class BasePage {
     return this.page.getByTestId(testId);
   }
 
-  locator(
-    selector: string,
-    filter?: { has?: Locator; hasNot?: Locator; hasNotText?: string | RegExp; hasText?: string | RegExp } | undefined,
-  ): Locator {
+  locator(selector: string, filter?: { hasText: string }): Locator {
     return this.page.locator(selector, filter);
+  }
+
+  // Frame helpers
+  async getFrameByName(name: string): Promise<Frame> {
+    const frame = this.page.frame({ name: name });
+    if (!frame) throw new Error(`Frame with name "${name}" not found`);
+    return frame;
+  }
+
+  async getFrameByUrlPart(urlPart: string): Promise<Frame> {
+    const frame = this.page.frames().find((f) => f.url().includes(urlPart));
+    if (!frame) throw new Error(`Frame with url containing "${urlPart}" not found`);
+    return frame;
+  }
+
+  async frameLocatorByName(name: string): Promise<FrameLocator> {
+    return this.page.frameLocator(`iframe[name="${name}"]`);
+  }
+
+  async getNestedFrame(parentName: string, childName: string): Promise<Frame> {
+    const parent = await this.getFrameByName(parentName);
+    const child = parent.childFrames().find((f) => f.name() === childName);
+    if (!child) throw new Error(`Child frame "${childName}" not found in parent "${parentName}"`);
+    return child;
+  }
+
+  // Get text from a frame
+  async getTextFromFrame(frameName: string): Promise<string> {
+    const frame = await this.getFrameByName(frameName);
+    // For demo, get the body text
+    return frame.locator('body').innerText();
   }
 
   // Common actions
@@ -61,8 +89,7 @@ export abstract class BasePage {
     await expect(this.page).toHaveURL(new RegExp(urlPart), { timeout });
   }
 
-  // Utility: can be extended by child classes
-  async waitForLoadState(state: 'load' | 'domcontentloaded' | 'networkidle' = 'load', timeout = 10000): Promise<void> {
-    await this.page.waitForLoadState(state, { timeout });
+  async dispose(): Promise<void> {
+    // Dispose of any resources or perform cleanup if necessary
   }
 }

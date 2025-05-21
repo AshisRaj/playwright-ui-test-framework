@@ -1,13 +1,13 @@
+import { BasePage } from '@pages';
 import { Page } from '@playwright/test';
-import { BasePage } from 'src/pages/BasePage';
 
 export class CartPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
 
+  // Define page elements
   elements = {
-    // Define page elements
     actionElements: {
       checkOutButton: () => this.getByRole('button', { name: 'Checkout' }),
     },
@@ -19,17 +19,23 @@ export class CartPage extends BasePage {
     },
   };
 
+  // Define page actions
   actions = {
-    // Define actions
     clickCheckOutButton: async () => {
       const button = this.elements.actionElements.checkOutButton();
       await this.click(button);
     },
   };
 
+  // Define page navigation
   navigation = {
     goToCartPage: async () => {
       await this.navigateTo('https://www.saucedemo.com/cart.html');
     },
   };
+
+  async dispose(): Promise<void> {
+    // Add any cleanup logic here, e.g., closing popups, clearing storage, etc.
+    // If nothing is needed, you can leave this empty or log for debugging.
+  }
 }

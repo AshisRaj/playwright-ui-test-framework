@@ -42,13 +42,13 @@ test.describe('playwright Dev site Tests with Routes', () => {
     });
   });
 
-  test('should mock Installation page', async ({ page }) => {
+  test('should mock Installation page', async ({ homePage }) => {
     await test.step('Navigate to Installation page', async () => {
-      await page.goto('/installation');
+      await homePage.navigateTo('/installation');
     });
 
     await test.step('Verify mocked Installation page', async () => {
-      await expect(page.getByRole('heading', { name: 'Mocked Installation Page' })).toBeVisible();
+      await expect(homePage.getByRole('heading', { name: 'Mocked Installation Page' })).toBeVisible();
     });
   });
 });

@@ -30,4 +30,11 @@ export class Routes {
     await page.route('**/installation', Routes.mockInstallationPage);
     await page.route('**/analytics/**', Routes.blockAnalytics);
   }
+
+  static async teardownRoutes(page: Page) {
+    // Remove all routes
+    await page.unroute('**/get-started');
+    await page.unroute('**/installation');
+    await page.unroute('**/analytics/**');
+  }
 }

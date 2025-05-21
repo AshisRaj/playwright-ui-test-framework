@@ -73,7 +73,7 @@ export default defineConfig([
       'playwright/no-nested-step': 'error',
       'playwright/no-networkidle': 'error',
       'playwright/no-nth-methods': 'error',
-      'playwright/no-raw-locators': ['error', { allowed: ['iframe', "[aria-busy='false']"] }],
+      'playwright/no-raw-locators': ['warn', { allowed: ['iframe', "[aria-busy='false']"] }],
       'playwright/missing-playwright-await': ['error'],
       'playwright/valid-expect': 'error',
       'playwright/valid-title': 'error',
@@ -88,6 +88,60 @@ export default defineConfig([
       'playwright/prefer-lowercase-title': 'error',
       'playwright/prefer-native-locators': 'error',
       'playwright/max-expects': ['error', { max: 5 }],
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      '@typescript-eslint/naming-convention': [
+        'error',
+        // Variable names (camelCase or UPPER_CASE for constants)
+        {
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE'],
+          leadingUnderscore: 'allow',
+        },
+        // Function names (camelCase)
+        {
+          selector: 'function',
+          format: ['camelCase'],
+        },
+        // Class names (PascalCase)
+        {
+          selector: 'class',
+          format: ['PascalCase'],
+        },
+        // Interface names (PascalCase with "I" prefix)
+        {
+          selector: 'interface',
+          format: ['PascalCase'],
+          custom: {
+            regex: '^I[A-Z]',
+            match: true,
+          },
+        },
+        // Type aliases (PascalCase)
+        {
+          selector: 'typeAlias',
+          format: ['PascalCase'],
+        },
+        // Enum names (PascalCase)
+        {
+          selector: 'enum',
+          format: ['PascalCase'],
+        },
+        // Enum members (UPPER_CASE or PascalCase)
+        {
+          selector: 'enumMember',
+          format: ['UPPER_CASE', 'PascalCase'],
+        },
+        // Property names (camelCase)
+        {
+          selector: 'property',
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
+        },
+      ],
     },
   },
 

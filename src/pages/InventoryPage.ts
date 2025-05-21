@@ -1,11 +1,12 @@
+import { BasePage } from '@pages';
 import { Page } from '@playwright/test';
-import { BasePage } from 'src/pages/BasePage';
 
 export class InventoryPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
 
+  // Define page elements
   elements = {
     actionElements: {
       openMenuButton: () => this.getByRole('button', { name: 'Open Menu' }),
@@ -22,8 +23,8 @@ export class InventoryPage extends BasePage {
     },
   };
 
+  // Define page actions
   actions = {
-    // Define actions
     clickOpenMenuButton: async () => {
       const button = this.elements.actionElements.openMenuButton();
       await this.click(button);
@@ -50,9 +51,15 @@ export class InventoryPage extends BasePage {
     },
   };
 
+  // Define page navigation
   navigation = {
     goToInventoryPage: async () => {
       await this.navigateTo('https://www.saucedemo.com/inventory.html');
     },
   };
+
+  async dispose(): Promise<void> {
+    // Add any cleanup logic here, e.g., closing popups, clearing storage, etc.
+    // If nothing is needed, you can leave this empty or log for debugging.
+  }
 }

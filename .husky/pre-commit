@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# yarn run lint-staged
+
+# yarn syntax-check
+# yarn lint
+
+# yarn syntax-check
+# yarn run lint-staged
+

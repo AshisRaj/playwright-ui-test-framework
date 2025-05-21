@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
 
 export class IndexedDbUtils {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static async setupIndexedDb(page: Page, dbName: string, userData: any) {
     await page.evaluate(
       ({ dbName, userData }) => {
@@ -19,13 +18,13 @@ export class IndexedDbUtils {
           // Store cookies
           const cookiesTransaction = db.transaction('cookies-store', 'readwrite');
           const cookiesStore = cookiesTransaction.objectStore('cookies-store');
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
           userData.cookies.forEach((cookie: any) => cookiesStore.put(cookie));
 
           // Store localStorage
           const localStorageTransaction = db.transaction('localStorage-store', 'readwrite');
           const localStorageStore = localStorageTransaction.objectStore('localStorage-store');
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
           userData.origins[0].localStorage.forEach((item: any) => localStorageStore.put(item));
         };
       },
