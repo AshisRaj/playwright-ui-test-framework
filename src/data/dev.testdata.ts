@@ -6,7 +6,7 @@ export const devEnvData = {
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
+    password: process.env.DB_PASSWORD || faker.internet.password(),
     phone: faker.phone.number(),
     userStatus: 1,
   },
@@ -16,7 +16,7 @@ export const devEnvData = {
   },
   validCredentials: {
     username: faker.internet.username(),
-    password: faker.internet.password(),
+    password: process.env.DB_PASSWORD2 || faker.internet.password(),
   },
   invalidCredentials: {
     username: 'invaliduser',
